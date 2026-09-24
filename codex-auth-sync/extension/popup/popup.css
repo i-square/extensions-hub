@@ -87,6 +87,7 @@ body {
 .small { font-size: 11.5px; }
 .label { color: var(--text-2); font-size: 12px; flex-shrink: 0; }
 .value { color: var(--text); font-size: 12px; text-align: right; word-break: break-all; }
+.status-value { flex: 1; min-width: 0; word-break: break-word; }
 .muted-text { color: var(--text-3); }
 
 /* ---------- 状态主卡 ---------- */

@@ -14,6 +14,7 @@ const els = {
   days: $('days'),
   btnPing: $('btnPing'),
   lastCheck: $('lastCheck'),
+  lastPushStatus: $('lastPushStatus'),
   lastPush: $('lastPush'),
   btnCheck: $('btnCheck'),
   btnPush: $('btnPush'),
@@ -83,8 +84,11 @@ function render(snapshot) {
 
   // 时间线
   els.lastCheck.textContent = fmtTime(state.lastCheckAt);
-  els.lastPush.textContent = (state.lastPushMsg ? state.lastPushMsg.replace(/^(自动|手动)推送(成功|失败)：/, '') + ' · ' : '') + fmtTime(state.lastPushAt);
-  els.lastPush.title = state.lastPushMsg || '';
+  els.lastPushStatus.textContent = state.lastPushMsg
+    ? state.lastPushMsg.replace(/^(自动|手动)推送(成功|失败)：/, '')
+    : '—';
+  els.lastPushStatus.title = state.lastPushMsg || '';
+  els.lastPush.textContent = fmtTime(state.lastPushAt);
 }
 
 async function refresh() {
