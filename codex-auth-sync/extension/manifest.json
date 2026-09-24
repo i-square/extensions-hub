@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Codex 登录态同步",
+  "short_name": "Codex Auth Sync",
+  "version": "1.0.0",
+  "description": "后台定时提取 ChatGPT 网页会话，自动组装 auth.json 并经原生消息助手安全写入 ~/.codex。无需打开 chatgpt.com 标签页，无需常驻服务。",
+  "minimum_chrome_version": "120",
+  "permissions": ["alarms", "nativeMessaging", "storage"],
+  "host_permissions": ["https://chatgpt.com/"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Codex 登录态同步"
+  },
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
