@@ -81,13 +81,13 @@ function validateAuth(auth) {
 function localTimestamp() {
   const d = new Date();
   const p = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}_${String(d.getMilliseconds()).padStart(3, '0')}`;
 }
 
 function pruneBackups(home) {
   try {
     const backups = fs.readdirSync(home)
-      .filter((f) => /^auth\.json\.bak_\d{8}_\d{6}$/.test(f))
+      .filter((f) => /^auth\.json\.bak_\d{8}_\d{6}(?:_\d{3})?$/.test(f))
       .sort();
     const excess = backups.length - MAX_BACKUPS;
     for (let i = 0; i < excess; i++) {

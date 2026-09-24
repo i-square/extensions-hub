@@ -116,8 +116,8 @@ els.pushIntervalHours.addEventListener('change', onNumberInput);
 async function saveConfig() {
   const cfg = {
     enabled: els.enabled.checked,
-    checkPeriodMin: Math.max(1, Number(els.checkPeriodMin.value) || 60),
-    pushIntervalHours: Math.max(1, Number(els.pushIntervalHours.value) || 24),
+    checkPeriodMin: Math.min(720, Math.max(1, Number(els.checkPeriodMin.value) || 60)),
+    pushIntervalHours: Math.min(240, Math.max(1, Number(els.pushIntervalHours.value) || 24)),
   };
   await send('save_config', { config: cfg });
 }
